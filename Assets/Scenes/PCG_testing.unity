@@ -352,8 +352,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalRotation: {x: 0.16295812, y: 0.6837654, z: -0.16082054, w: 0.69285375}
+  m_LocalPosition: {x: -137.47354, y: 138.72583, z: 43.93803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -403,11 +403,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTiles: 35
+  tileEdgeSize: 40
   topExitTiles:
-  - {fileID: 8341126162717128200, guid: 76decf2c2916b44c5b862acd423bf13b, type: 3}
+  - {fileID: 3160452744030447836, guid: 4fd14a676c30d44d587a8a499d743d7a, type: 3}
+  - {fileID: 8144813798179921012, guid: 48db0eceba1e5433eae2e2ade171a9be, type: 3}
   bottomExitTiles:
-  - {fileID: 8341126162717128200, guid: 76decf2c2916b44c5b862acd423bf13b, type: 3}
+  - {fileID: 3160452744030447836, guid: 4fd14a676c30d44d587a8a499d743d7a, type: 3}
+  - {fileID: 8144813798179921012, guid: 48db0eceba1e5433eae2e2ade171a9be, type: 3}
   leftExitTiles:
-  - {fileID: 8341126162717128200, guid: 76decf2c2916b44c5b862acd423bf13b, type: 3}
+  - {fileID: 3160452744030447836, guid: 4fd14a676c30d44d587a8a499d743d7a, type: 3}
+  - {fileID: 8144813798179921012, guid: 48db0eceba1e5433eae2e2ade171a9be, type: 3}
   rightExitTiles:
-  - {fileID: 8341126162717128200, guid: 76decf2c2916b44c5b862acd423bf13b, type: 3}
+  - {fileID: 3160452744030447836, guid: 4fd14a676c30d44d587a8a499d743d7a, type: 3}
+  - {fileID: 8144813798179921012, guid: 48db0eceba1e5433eae2e2ade171a9be, type: 3}
