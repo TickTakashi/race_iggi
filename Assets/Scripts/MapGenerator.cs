@@ -144,7 +144,7 @@ public class MapGenerator : MonoBehaviour {
                 {
                     randTile = Random.Range(0, cornerTiles.Length);
                     newTile = Instantiate(cornerTiles[randTile], locations[i], straightTiles[randTile].transform.rotation);
-                    newTile.transform.Rotate(0, 270, 0, Space.World);
+                    newTile.transform.Rotate(0, 90, 0, Space.World);
                 }
 
                 // Path is a corner, was heading left and now straight
@@ -160,7 +160,7 @@ public class MapGenerator : MonoBehaviour {
                 {
                     randTile = Random.Range(0, cornerTiles.Length);
                     newTile = Instantiate(cornerTiles[randTile], locations[i], straightTiles[randTile].transform.rotation);
-                    newTile.transform.Rotate(0, 90, 0, Space.World);
+                    newTile.transform.Rotate(0, 270, 0, Space.World);
                 }
             }
         }
