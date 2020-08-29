@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PhysicsController : MonoBehaviour
 {
 	public ConfigurableJoint Hips;
 
 	public float Speed = 5f;
+	public float TurningForce = 30f;
 	public float JumpHeight = 2f;
 	public float GroundDistance = 0.2f;
 	public LayerMask Ground;
 	public Transform GroundCheckOrigin;
 	public Rigidbody Body;
-	
+
 	[Tooltip("The transform that input is relative to, usually the 3rd person camera.")]
 	public Transform ForwardGuide;
 
@@ -37,12 +39,21 @@ public class PhysicsController : MonoBehaviour
 
 
 	void FixedUpdate() {
-		Vector3 relativeInputs = Quaternion.Euler(0, ForwardGuide.rotation.eulerAngles.y, 0) * _inputs;
-		Body.MovePosition(Body.position + relativeInputs * Speed * Time.fixedDeltaTime);
-		
-		if (relativeInputs.magnitude > 0.01f) {
-			Debug.DrawLine(transform.position, transform.position + relativeInputs.normalized * 8);
-			Hips.SetTargetRotation(Quaternion.LookRotation(relativeInputs, Vector3.up), _cachedRotation);
+		if (_isGrounded) {
+			Vector3 relativeInputs = Quaternion.Euler(0, ForwardGuide.rotation.eulerAngles.y, 0) * _inputs;
+
+			// Step 1: Find our velocty vector V
+			// Step 2: Calculate our "Desired" velocity vector based on input, D.
+			// Step 3: Find Vector X such that V + X = D
+			// Step 4: Apply X.normalized * Acceleration
+			if (relativeInputs.magnitude > 0.01f) {
+				Vector3 deltaV = relativeInputs * Speed - Body.velocity;
+				Body.AddForce(deltaV.normalized * TurningForce, ForceMode.Acceleration);
+				//Body.MovePosition(Body.position + relativeInputs * Speed * Time.fixedDeltaTime);
+
+				Debug.DrawLine(transform.position, transform.position + relativeInputs.normalized * 8);
+				Hips.SetTargetRotation(Quaternion.LookRotation(relativeInputs, Vector3.up), _cachedRotation);
+			}
 		}
 	}
 }
