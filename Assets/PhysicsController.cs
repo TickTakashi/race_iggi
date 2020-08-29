@@ -9,7 +9,7 @@ public class PhysicsController : MonoBehaviour
 
 	public float Speed = 5f;
 	public float TurningForce = 30f;
-	public float JumpHeight = 2f;
+	public float JumpForce = 2f;
 	public float GroundDistance = 0.2f;
 	public LayerMask Ground;
 	public Transform GroundCheckOrigin;
@@ -33,7 +33,7 @@ public class PhysicsController : MonoBehaviour
 		_inputs.z = Input.GetAxis("Vertical");
 
 		if (Input.GetButtonDown("Jump") && _isGrounded) {
-			Body.AddForce(Vector3.up * Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+			Body.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
 		}
 	}
 
@@ -48,7 +48,7 @@ public class PhysicsController : MonoBehaviour
 			// Step 4: Apply X.normalized * Acceleration
 			if (relativeInputs.magnitude > 0.01f) {
 				Vector3 deltaV = relativeInputs * Speed - Body.velocity;
-				Body.AddForce(deltaV.normalized * TurningForce, ForceMode.Acceleration);
+				Body.AddForce(deltaV.normalized * TurningForce * relativeInputs.magnitude, ForceMode.Force);
 				//Body.MovePosition(Body.position + relativeInputs * Speed * Time.fixedDeltaTime);
 
 				Debug.DrawLine(transform.position, transform.position + relativeInputs.normalized * 8);
