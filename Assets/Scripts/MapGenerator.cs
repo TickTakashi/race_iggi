@@ -109,7 +109,7 @@ public class MapGenerator : MonoBehaviour {
             else if (i == locations.Count - 1)
             {
                 newTile = Instantiate(endTile, locations[i], Quaternion.identity);
-                if (path[i] != 1)
+                if (path[i] == 1)
                 {
                     newTile.transform.Rotate(0, 90, 0, Space.World);
                 }
