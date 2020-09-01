@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2833966239186263570}
   - component: {fileID: 1476706689483019252}
   - component: {fileID: 427578958947998573}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1987862700083597731}
   - component: {fileID: 5074769522943446989}
   - component: {fileID: 5030193320095555967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 8144813798179920971}
   - component: {fileID: 8144813798179920970}
   - component: {fileID: 8144813798179921013}
+  - component: {fileID: 2468279425019720573}
   m_Layer: 0
   m_Name: Spinning Circle Tile
   m_TagString: Untagged
@@ -288,6 +289,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2468279425019720573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144813798179921012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &8144813799739035320
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +318,7 @@ GameObject:
   - component: {fileID: 8144813799739035324}
   - component: {fileID: 8144813799739035327}
   - component: {fileID: 8144813799739035326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
