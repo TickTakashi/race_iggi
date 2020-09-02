@@ -168,4 +168,10 @@ public class MapGenerator : MonoBehaviour {
             }
         }
     }
+
+
+    int[] GetIdealParameters()
+    {
+
+    }
 }
