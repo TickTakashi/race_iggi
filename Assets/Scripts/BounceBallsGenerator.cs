@@ -1,33 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Mirror;
 using UnityEngine;
 
-public class BounceBallsGenerator : MonoBehaviour
+public class BounceBallsGenerator : NetworkBehaviour
 {
+	public Transform BallContainer;
+	public Transform Path;
 
-    public float minWidth = .15f;
-    public float maxWidth = .4f;
+	public float minWidth = .15f;
+	public float maxWidth = .4f;
 
-    public float minForce = 5f;
-    public float maxForce = 15f;
+	public float minForce = 5f;
+	public float maxForce = 15f;
 
-    private float width;
-    private float force;
+	public override void OnStartServer() {
+		base.OnStartServer();
+		Setup();
+	}
 
-    void Start()
-    {
-        width = Random.Range(minWidth, maxWidth);
-        Transform path = this.transform.GetChild(0);
+	void Setup() {
+		Path.transform.localScale = new Vector3(Random.Range(minWidth, maxWidth), Path.transform.localScale.y, Path.transform.localScale.z);
 
-        path.transform.localScale = new Vector3(width, path.transform.localScale.y, path.transform.localScale.z);
-        
-        Transform balls = this.transform.GetChild(1);
-        foreach (Transform child in balls.transform)
-        {
-            force = Random.Range(minForce, maxForce);
-            child.GetComponent<Rigidbody>().velocity = child.transform.right * force;
-        }
-               
-    }
+		foreach (Transform child in BallContainer.transform) {
 
+			Debug.LogWarning("Setting Velocity on " + child);
+			child.GetComponent<Rigidbody>().velocity = child.transform.right * Random.Range(minForce, maxForce);
+		}
+	}
 }
