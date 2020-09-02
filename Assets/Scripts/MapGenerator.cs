@@ -37,14 +37,17 @@ public class MapGenerator : NetworkBehaviour
 	private List<int> path = new List<int>() { 0 };
 	private List<Vector3Int> locations = new List<Vector3Int>() { new Vector3Int(0, 0, 0) };
 
-    public void Start()
-    {
+	public event System.Action OnUserDataLoaded;
+
+	public override void OnStartServer() {
+		base.OnStartServer();
+		Physics.autoSimulation = false; // TODO: There's probably a much better way of delaying spawning. But this will do for now.
+		OnUserDataLoaded += OnGetComplete;
 		StartCoroutine(GetUserData());
+
 	}
 
-    public override void OnStartServer() {
-		base.OnStartServer();
-
+	void OnGetComplete() {
 		int ServerSeed = DEBUG_ForceSeed;
 
 		if (ServerSeed == 0) {
@@ -53,6 +56,8 @@ public class MapGenerator : NetworkBehaviour
 
 		Debug.Log("Calling Spawn...");
 		Spawn(ServerSeed);
+
+		Physics.autoSimulation = true;
 	}
 
 
@@ -61,7 +66,7 @@ public class MapGenerator : NetworkBehaviour
 		Debug.Log("Spawning Level...");
 		Random.InitState(Seed);
 
-		float randGaus = RandomGaussian(idealLength-numTilesMaximumVariation, idealLength+numTilesMaximumVariation);
+		float randGaus = RandomGaussian(idealLength - numTilesMaximumVariation, idealLength + numTilesMaximumVariation);
 
 		numTiles = Mathf.RoundToInt(randGaus);
 		Debug.Log("random map length is " + numTiles);
@@ -177,23 +182,21 @@ public class MapGenerator : NetworkBehaviour
 		}
 	}
 
-	IEnumerator GetUserData()
-    {
-        UnityWebRequest userData = UnityWebRequest.Get(url);
-        //userData.useHttpContinue = false;
-        //userData.downloadHandler = new DownloadHandlerBuffer();
-        yield return userData.SendWebRequest();
+	IEnumerator GetUserData() {
+		UnityWebRequest userData = UnityWebRequest.Get(url);
+		//userData.useHttpContinue = false;
+		//userData.downloadHandler = new DownloadHandlerBuffer();
+		yield return userData.SendWebRequest();
 
-		if (userData.isNetworkError || userData.isHttpError)
-		{
+		if (userData.isNetworkError || userData.isHttpError) {
 			Debug.Log(userData.error);
 		}
 
 		ParseCSV(userData);
-    }
+		OnUserDataLoaded?.Invoke();
+	}
 
-	void ParseCSV(UnityWebRequest req)
-    {
+	void ParseCSV(UnityWebRequest req) {
 		//Debug.Log("Data before parsing: " + req.downloadHandler.text);
 
 		string fullText = req.downloadHandler.text;
@@ -209,8 +212,7 @@ public class MapGenerator : NetworkBehaviour
 		lines = lines.Skip(1).ToArray();
 
 		// Parse each lines at the commas
-		foreach (string line in lines)
-        {
+		foreach (string line in lines) {
 			string[] entries = line.Split(',');
 
 			double lengthVal = (double)System.Int32.Parse(entries[2]);
@@ -224,10 +226,9 @@ public class MapGenerator : NetworkBehaviour
 		double[] funDataArr = funData.ToArray();
 
 		CalculateIdealLength(lengthDataArr, funDataArr);
-    }
+	}
 
-	void CalculateIdealLength(double[] length, double[] fun)
-    {
+	void CalculateIdealLength(double[] length, double[] fun) {
 		//double[] length = new double[] { 10, 20, 30 };
 		//double[] fun = new double[] { 15, 20, 25 };
 
@@ -238,16 +239,14 @@ public class MapGenerator : NetworkBehaviour
 		Debug.Log("data shows that maximum fun is achieved at length of: " + Mathf.RoundToInt((float)vertex));
 
 		idealLength = Mathf.RoundToInt((float)vertex);
-    }
+	}
 
-	public static float RandomGaussian(float minValue = 0.0f, float maxValue = 1.0f)
-	{
+	public static float RandomGaussian(float minValue = 0.0f, float maxValue = 1.0f) {
 		float u, v, S;
 
-		do
-		{
-			u = 2.0f * UnityEngine.Random.value - 1.0f;
-			v = 2.0f * UnityEngine.Random.value - 1.0f;
+		do {
+			u = 2.0f * Random.value - 1.0f;
+			v = 2.0f * Random.value - 1.0f;
 			S = u * u + v * v;
 		}
 		while (S >= 1.0f);

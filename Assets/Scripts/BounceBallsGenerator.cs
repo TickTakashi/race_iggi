@@ -21,8 +21,6 @@ public class BounceBallsGenerator : NetworkBehaviour
 		Path.transform.localScale = new Vector3(Random.Range(minWidth, maxWidth), Path.transform.localScale.y, Path.transform.localScale.z);
 
 		foreach (Transform child in BallContainer.transform) {
-
-			Debug.LogWarning("Setting Velocity on " + child);
 			child.GetComponent<Rigidbody>().velocity = child.transform.right * Random.Range(minForce, maxForce);
 		}
 	}
