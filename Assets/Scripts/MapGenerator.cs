@@ -139,9 +139,9 @@ public class MapGenerator : NetworkBehaviour
 			if (i == 0) {
 				NetworkServer.Spawn(Instantiate(startTile, locations[i], startTile.transform.rotation));
 			} else if (i == locations.Count - 1) {
-				// For the last tile generated, we don't care about the forward direction
+				// For the last tile generated, we don't care about the forward direction, just the previous one
 				newTile = Instantiate(endTile, locations[i], Quaternion.identity);
-				if (path[i] != 1) {
+				if (path[i] == 1) {
 					newTile.transform.Rotate(0, 90, 0, Space.World);
 				}
 				NetworkServer.Spawn(newTile);

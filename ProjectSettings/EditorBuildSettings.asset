@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 741a20cd8861ef74989ffc04836dda4b
+  - enabled: 1
+    path: Assets/Scenes/Survey.unity
+    guid: 407c4929e39424170b649a43d5beebb3
   m_configObjects: {}
