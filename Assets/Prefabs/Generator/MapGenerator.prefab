@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4369457751714858385}
   - component: {fileID: 4369457751714858384}
+  - component: {fileID: 69371408}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -43,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0a242b75d294ef79dbbe8c6e32184a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numTiles: 20
+  syncMode: 0
+  syncInterval: 0.1
+  numTiles: 5
   tileEdgeSize: 20
   startTile: {fileID: 2917607387117590488, guid: b399a2a3dfb164b618668baeff10f784, type: 3}
   endTile: {fileID: 241249341285315295, guid: 89eeb51e8289940d2923cf9813ccd75c, type: 3}
@@ -54,3 +57,20 @@ MonoBehaviour:
   cornerTiles:
   - {fileID: 8144813798179921012, guid: 48db0eceba1e5433eae2e2ade171a9be, type: 3}
   - {fileID: 3160452744030447836, guid: 4fd14a676c30d44d587a8a499d743d7a, type: 3}
+  DEBUG_ForceSeed: 0
+--- !u!114 &69371408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369457751714858386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0

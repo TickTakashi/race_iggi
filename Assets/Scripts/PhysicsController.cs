@@ -9,13 +9,14 @@ public class PhysicsController : NetworkBehaviour
 	public float TurningForce = 30f;
 	public float JumpForce = 2f;
 	public float GroundDistance = 0.2f;
+	public float AirControlRatio = 0.3f;
 	public LayerMask Ground;
 	public Transform GroundCheckOrigin;
 	public Rigidbody Body;
 
 	[Tooltip("The transform that input is relative to, usually the 3rd person camera.")]
 	public CinemachineFreeLook ForwardGuidePrefab;
-	
+
 	private CinemachineFreeLook _forwardGuide;
 	private Vector3 _inputs = Vector3.zero;
 	private Quaternion _cachedRotation;
@@ -30,7 +31,7 @@ public class PhysicsController : NetworkBehaviour
 			CinemachineFreeLook cfl = Instantiate(ForwardGuidePrefab);
 			cfl.Follow = transform;
 			cfl.LookAt = transform;
-			
+
 			_forwardGuide = cfl;
 
 		}
@@ -53,12 +54,10 @@ public class PhysicsController : NetworkBehaviour
 	[Client]
 	void FixedUpdate() {
 		if (isLocalPlayer) {
-			if (isGrounded) {
-				Vector3 relativeInputs = Quaternion.Euler(0, _forwardGuide.State.CorrectedOrientation.eulerAngles.y, 0) * _inputs;
+			Vector3 relativeInputs = Quaternion.Euler(0, _forwardGuide.State.CorrectedOrientation.eulerAngles.y, 0) * _inputs;
 
-				if (relativeInputs.magnitude > 0.01f) {
-					CmdMove(relativeInputs);
-				}
+			if (relativeInputs.magnitude > 0.01f) {
+				CmdMove(relativeInputs);
 			}
 		}
 	}
@@ -78,6 +77,7 @@ public class PhysicsController : NetworkBehaviour
 
 	[Command]
 	void CmdMove(Vector3 relativeInputs) {
+
 		if (isGrounded) {
 			// Step 1: Find our Current velocty vector V
 			// Step 2: Calculate our Desired velocity vector based on input D, and Speed S.
@@ -86,9 +86,9 @@ public class PhysicsController : NetworkBehaviour
 
 			Vector3 deltaV = relativeInputs * Speed - Body.velocity;
 			Body.AddForce(deltaV.normalized * TurningForce * relativeInputs.magnitude, ForceMode.Force);
-
-			Debug.DrawLine(transform.position, transform.position + relativeInputs.normalized * 8);
 			Hips.SetTargetRotation(Quaternion.LookRotation(relativeInputs, Vector3.up), _cachedRotation);
+		} else {
+			Body.AddForce(relativeInputs.normalized * TurningForce * AirControlRatio * relativeInputs.magnitude, ForceMode.Force);
 		}
 	}
 
