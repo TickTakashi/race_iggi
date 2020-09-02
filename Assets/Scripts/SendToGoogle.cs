@@ -10,7 +10,7 @@ public class SendToGoogle : MonoBehaviour
     public GameObject mapGenerator;
 
     private string funResponse;
-    private string mapLength;
+    private string mapLength = "10";
 
     [SerializeField]
     private string url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfv-wF6fxOtg8FxWHhNYNGu2iDyF45KhsHN4zuc_K3Bnc5k9Q/formResponse";
@@ -19,9 +19,9 @@ public class SendToGoogle : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("entry.218428610", funResponse);
-        byte[] rawData = form.data;
-        WWW www = new WWW(url, rawData);
-        yield return www;
+        form.AddField("entry.1161026783", mapLength);
+        UnityWebRequest www = UnityWebRequest.Post(url, form);
+        yield return www.SendWebRequest();
     }
 
     public void Send()

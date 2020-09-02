@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Mirror;
 using UnityEngine;
+using UnityEngine.Networking;
+using MathNet.Numerics;
 
 public class MapGenerator : NetworkBehaviour
 {
 	// 0 = spawn, 1 = top, 2 = left, 3 = right
 	public int numTiles = 12;
+	public float numTilesMaximumVariation = 3;
 	public int tileEdgeSize = 20;
 
 	public GameObject startTile;
@@ -18,6 +22,8 @@ public class MapGenerator : NetworkBehaviour
 	[Tooltip("Used to force a specific random seed value for debugging purposes")]
 	public int DEBUG_ForceSeed = 0;
 
+	private const string url = "https://docs.google.com/spreadsheets/d/1oyn2qrTV5vgCidw-L69JlHLH4p0i1uyGnA899FeR67g/export?format=csv";
+
 	private Vector3Int currLocation = new Vector3Int(0, 0, 0);
 
 	private GameObject newTile;
@@ -25,12 +31,18 @@ public class MapGenerator : NetworkBehaviour
 	private int randDirection = 1;
 	private int randTile;
 
+	private int idealLength;
+
 	// 0 = spawn, 1 = top, 2 = left, 3 = right
 	private List<int> path = new List<int>() { 0 };
 	private List<Vector3Int> locations = new List<Vector3Int>() { new Vector3Int(0, 0, 0) };
 
+    public void Start()
+    {
+		StartCoroutine(GetUserData());
+	}
 
-	public override void OnStartServer() {
+    public override void OnStartServer() {
 		base.OnStartServer();
 
 		int ServerSeed = DEBUG_ForceSeed;
@@ -48,6 +60,15 @@ public class MapGenerator : NetworkBehaviour
 	void Spawn(int Seed) {
 		Debug.Log("Spawning Level...");
 		Random.InitState(Seed);
+
+		float randGaus = RandomGaussian(idealLength-numTilesMaximumVariation, idealLength+numTilesMaximumVariation);
+
+		numTiles = Mathf.RoundToInt(randGaus);
+		Debug.Log("random map length is " + numTiles);
+
+		// Save length of map in order to post to google forms later
+		PlayerPrefs.SetInt("numTiles", numTiles);
+		PlayerPrefs.Save();
 
 		// Until we reach the maximum number of tiles on the map
 		for (int i = 0; i < numTiles; i++) {
@@ -154,5 +175,90 @@ public class MapGenerator : NetworkBehaviour
 				NetworkServer.Spawn(newTile);
 			}
 		}
+	}
+
+	IEnumerator GetUserData()
+    {
+        UnityWebRequest userData = UnityWebRequest.Get(url);
+        //userData.useHttpContinue = false;
+        //userData.downloadHandler = new DownloadHandlerBuffer();
+        yield return userData.SendWebRequest();
+
+		if (userData.isNetworkError || userData.isHttpError)
+		{
+			Debug.Log(userData.error);
+		}
+
+		ParseCSV(userData);
+    }
+
+	void ParseCSV(UnityWebRequest req)
+    {
+		//Debug.Log("Data before parsing: " + req.downloadHandler.text);
+
+		string fullText = req.downloadHandler.text;
+		List<double> lengthData = new List<double>();
+		List<double> funData = new List<double>();
+
+		// Split into lines.
+		fullText = fullText.Replace('\n', '\r');
+		string[] lines = fullText.Split(new char[] { '\r' },
+			System.StringSplitOptions.RemoveEmptyEntries);
+
+		// Skip first line, which contains column labels
+		lines = lines.Skip(1).ToArray();
+
+		// Parse each lines at the commas
+		foreach (string line in lines)
+        {
+			string[] entries = line.Split(',');
+
+			double lengthVal = (double)System.Int32.Parse(entries[2]);
+			double funVal = (double)System.Int32.Parse(entries[1]);
+
+			lengthData.Add(lengthVal);
+			funData.Add(funVal);
+		}
+
+		double[] lengthDataArr = lengthData.ToArray();
+		double[] funDataArr = funData.ToArray();
+
+		CalculateIdealLength(lengthDataArr, funDataArr);
+    }
+
+	void CalculateIdealLength(double[] length, double[] fun)
+    {
+		//double[] length = new double[] { 10, 20, 30 };
+		//double[] fun = new double[] { 15, 20, 25 };
+
+		var polyFit = Polynomial.Fit(length, fun, 2);
+
+		double vertex = polyFit.Evaluate(-polyFit.Coefficients[1] / (2 * polyFit.Coefficients[2]));
+
+		Debug.Log("data shows that maximum fun is achieved at length of: " + Mathf.RoundToInt((float)vertex));
+
+		idealLength = Mathf.RoundToInt((float)vertex);
+    }
+
+	public static float RandomGaussian(float minValue = 0.0f, float maxValue = 1.0f)
+	{
+		float u, v, S;
+
+		do
+		{
+			u = 2.0f * UnityEngine.Random.value - 1.0f;
+			v = 2.0f * UnityEngine.Random.value - 1.0f;
+			S = u * u + v * v;
+		}
+		while (S >= 1.0f);
+
+		// Standard Normal Distribution
+		float std = u * Mathf.Sqrt(-2.0f * Mathf.Log(S) / S);
+
+		// Normal Distribution centered between the min and max value
+		// and clamped following the "three-sigma rule"
+		float mean = (minValue + maxValue) / 2.0f;
+		float sigma = (maxValue - mean) / 3.0f;
+		return Mathf.Clamp(std * sigma + mean, minValue, maxValue);
 	}
 }

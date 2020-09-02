@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0a242b75d294ef79dbbe8c6e32184a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   numTiles: 20
   tileEdgeSize: 20
   startTile: {fileID: 2917607387117590488, guid: b399a2a3dfb164b618668baeff10f784, type: 3}
@@ -54,3 +56,4 @@ MonoBehaviour:
   cornerTiles:
   - {fileID: 8144813798179921012, guid: 48db0eceba1e5433eae2e2ade171a9be, type: 3}
   - {fileID: 3160452744030447836, guid: 4fd14a676c30d44d587a8a499d743d7a, type: 3}
+  DEBUG_ForceSeed: 0
