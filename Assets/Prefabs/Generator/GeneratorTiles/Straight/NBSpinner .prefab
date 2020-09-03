@@ -353,7 +353,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 110
+  m_Constraints: 46
   m_CollisionDetection: 0
 --- !u!114 &4593243792486860271
 MonoBehaviour:
@@ -482,7 +482,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 110
+  m_Constraints: 46
   m_CollisionDetection: 0
 --- !u!114 &7198656980936027019
 MonoBehaviour:

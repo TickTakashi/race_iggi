@@ -83,7 +83,7 @@ public class PhysicsController : NetworkBehaviour
 		Body.SetKinematicWithChildren(false);
 		_cachedRotation = Hips.transform.rotation;
 		_cachedSpawnPosition = transform.position;
-		SyncColor = Random.ColorHSV(0, 1f, 0.7f, 0.8f, 0.8f, 1.0f);
+		SyncColor = Random.ColorHSV(0, 1f, 0.9f, 1.0f, 0.9f, 1.0f);
 		SetColor(SyncColor);
 
 	}
