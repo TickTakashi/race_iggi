@@ -54,7 +54,7 @@ public class PhysicsController : NetworkBehaviour
 				CmdJump();
 			}
 
-			if (isOOB || Input.GetButtonDown("Escape")) {
+			if (isOOB || Input.GetButtonDown("Cancel")) {
 				CmdRespawn();
 			}
 		}
