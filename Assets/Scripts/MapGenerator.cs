@@ -22,6 +22,8 @@ public class MapGenerator : NetworkBehaviour
 	[Tooltip("Used to force a specific random seed value for debugging purposes")]
 	public int DEBUG_ForceSeed = 0;
 
+	private bool Generated = false;
+
 	private const string url = "https://docs.google.com/spreadsheets/d/1oyn2qrTV5vgCidw-L69JlHLH4p0i1uyGnA899FeR67g/export?format=csv";
 
 	private Vector3Int currLocation = new Vector3Int(0, 0, 0);
@@ -55,7 +57,10 @@ public class MapGenerator : NetworkBehaviour
 		}
 
 		Debug.Log("Calling Spawn...");
-		Spawn(ServerSeed);
+		if (!Generated) {
+			Spawn(ServerSeed);
+			//Generated = true;
+		}
 
 		Physics.autoSimulation = true;
 	}

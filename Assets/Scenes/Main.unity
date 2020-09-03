@@ -501,6 +501,10 @@ PrefabInstance:
       propertyPath: m_AssetId
       value: 2c2532ec0f106cb4da6f589035741da0
       objectReference: {fileID: 0}
+    - target: {fileID: 4369457751714858384, guid: 2c2532ec0f106cb4da6f589035741da0, type: 3}
+      propertyPath: DEBUG_ForceSeed
+      value: 29
+      objectReference: {fileID: 0}
     - target: {fileID: 4369457751714858385, guid: 2c2532ec0f106cb4da6f589035741da0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -756,7 +760,7 @@ MonoBehaviour:
   OnServerDisconnected:
     m_PersistentCalls:
       m_Calls: []
-  port: 7777
+  port: 25565
   NoDelay: 1
   serverMaxMessageSize: 16384
   serverMaxReceivesPerTick: 10000
@@ -774,7 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
+  dontDestroyOnLoad: 0
   runInBackground: 1
   startOnHeadless: 1
   showDebugMessages: 0
@@ -782,8 +786,8 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: 
   transport: {fileID: 1794997381}
-  networkAddress: localhost
-  maxConnections: 4
+  networkAddress: 2a00:23c4:c103:8e00:1d30:306f:5497:f871
+  maxConnections: 12
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
