@@ -473,9 +473,9 @@ MonoBehaviour:
   Hips: {fileID: 6620533302620378239}
   Speed: 8
   TurningForce: 30
-  JumpForce: 10
+  JumpForce: 9.5
   GroundDistance: 0.2
-  AirControlRatio: 0.3
+  AirControlRatio: 0.1
   Ground:
     serializedVersion: 2
     m_Bits: 256
