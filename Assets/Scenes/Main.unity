@@ -702,6 +702,7 @@ GameObject:
   - component: {fileID: 1794997382}
   - component: {fileID: 1794997381}
   - component: {fileID: 1794997380}
+  - component: {fileID: 1794997384}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -731,7 +732,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794997379}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
   m_Name: 
@@ -781,11 +782,11 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   runInBackground: 1
   startOnHeadless: 1
-  showDebugMessages: 0
+  showDebugMessages: 1
   serverTickRate: 30
   offlineScene: 
   onlineScene: 
-  transport: {fileID: 1794997381}
+  transport: {fileID: 1794997384}
   networkAddress: 2a00:23c4:c103:8e00:1d30:306f:5497:f871
   maxConnections: 12
   disconnectInactiveConnections: 0
@@ -820,6 +821,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794997384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794997379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f039183eda8945448b822a77e2a9d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClientConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClientDataReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClientError:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClientDisconnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerDataReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerError:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerDisconnected:
+    m_PersistentCalls:
+      m_Calls: []
+  port: 25565
+  NoDelay: 1
+  Secure: 0
+  CertificatePath: 
+  CertificatePassword: 
 --- !u!1 &1894876202
 GameObject:
   m_ObjectHideFlags: 0
