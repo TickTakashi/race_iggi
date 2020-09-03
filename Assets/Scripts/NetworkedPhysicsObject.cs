@@ -19,7 +19,7 @@ public class NetworkedPhysicsObject : MonoBehaviour
 			Setup();
 		} else {
 			Debug.LogError("There is no network transform in parents. This is required.");
-			Destroy(this);
+			DestroyImmediate(this);
 		}
 
 	}
@@ -29,7 +29,7 @@ public class NetworkedPhysicsObject : MonoBehaviour
 			Rigid = GetComponent<Rigidbody>();
 			if (!Rigid) {
 				Debug.LogError("Object has no rigidbody. Please attach this directly to rigidbody gameobjects");
-				Destroy(this);
+				DestroyImmediate(this);
 				return;
 			}
 
@@ -48,7 +48,7 @@ public class NetworkedPhysicsObject : MonoBehaviour
 			NTC.target = transform;
 		} else {
 			Debug.LogError("You've added a networked physics object, but its parents are missing essential networking components. Is this a mistake? (Ask Charles)");
-			Destroy(this);
+			DestroyImmediate(this);
 		}
 	}
 }

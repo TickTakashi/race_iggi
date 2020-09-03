@@ -60,9 +60,8 @@ public class MapGenerator : NetworkBehaviour
 			ServerSeed = UnityEngine.Random.Range(1, 1337);
 		}
 
-		Debug.Log("Calling Spawn...");
-		if (!Generated)
-		{
+		Debug.Log("Calling Spawn with seed: " + ServerSeed);
+		if (!Generated) {
 			Spawn(ServerSeed);
 			//Generated = true;
 		}

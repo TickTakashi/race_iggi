@@ -342,9 +342,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -369,8 +369,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972453341}
-  m_LocalRotation: {x: 0.23951899, y: -0, z: -0, w: 0.9708917}
-  m_LocalPosition: {x: 0, y: 6.33, z: -12}
+  m_LocalRotation: {x: 0.09989503, y: -0.8438374, z: 0.16876778, w: 0.49947673}
+  m_LocalPosition: {x: 8.921628, y: 8.259642, z: 4.8958855}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -500,10 +500,6 @@ PrefabInstance:
     - target: {fileID: 69371408, guid: 2c2532ec0f106cb4da6f589035741da0, type: 3}
       propertyPath: m_AssetId
       value: 2c2532ec0f106cb4da6f589035741da0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4369457751714858384, guid: 2c2532ec0f106cb4da6f589035741da0, type: 3}
-      propertyPath: DEBUG_ForceSeed
-      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 4369457751714858385, guid: 2c2532ec0f106cb4da6f589035741da0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -782,7 +778,7 @@ MonoBehaviour:
   runInBackground: 1
   startOnHeadless: 1
   showDebugMessages: 0
-  serverTickRate: 30
+  serverTickRate: 60
   offlineScene: 
   onlineScene: 
   transport: {fileID: 1794997381}

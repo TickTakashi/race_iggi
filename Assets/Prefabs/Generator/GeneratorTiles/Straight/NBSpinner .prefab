@@ -10,6 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6528747379487966615}
   - component: {fileID: -1328824436726230490}
+  - component: {fileID: 7871195945955154135}
+  - component: {fileID: 8999650874407160695}
+  - component: {fileID: 3607437952774956528}
+  - component: {fileID: 3750224311588799054}
+  - component: {fileID: 4384199939160313254}
   m_Layer: 0
   m_Name: 'NBSpinner '
   m_TagString: Untagged
@@ -50,6 +55,98 @@ MonoBehaviour:
   serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
+--- !u!114 &7871195945955154135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260938108404687818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d09d9f4a6e7ee4ba9a94181442e442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  ManagedBodies:
+  - {fileID: 5023135937020099465}
+  - {fileID: 5023135935695521972}
+--- !u!114 &8999650874407160695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260938108404687818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+--- !u!114 &3607437952774956528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260938108404687818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  target: {fileID: 5023135937020099470}
+--- !u!114 &3750224311588799054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260938108404687818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  target: {fileID: 5023135935695521961}
+--- !u!114 &4384199939160313254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260938108404687818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057835fa5227c984f8709906ed46e4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  Spinners:
+  - {fileID: 5023135937020099465}
+  - {fileID: 5023135935695521972}
+  minForce: 0.5
+  maxForce: 1
 --- !u!1 &1809970278665741090
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +160,7 @@ GameObject:
   - component: {fileID: 8521335839197660151}
   - component: {fileID: 3195916610507276544}
   m_Layer: 9
-  m_Name: MovingPlatforms
+  m_Name: Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809970278665741090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -3.4, z: 0.55}
+  m_LocalPosition: {x: 0.3, y: -4.65, z: 0.55}
   m_LocalScale: {x: 25, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 6528747379487966615}
@@ -158,7 +255,7 @@ GameObject:
   - component: {fileID: 5023135935695521975}
   - component: {fileID: 5023135935695521974}
   - component: {fileID: 5023135935695521972}
-  - component: {fileID: 5023135935695521971}
+  - component: {fileID: 4593243792486860271}
   m_Layer: 8
   m_Name: Left block
   m_TagString: Hazard
@@ -174,8 +271,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023135935695521970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 5, z: 5}
+  m_LocalPosition: {x: -4.75, y: 1, z: 0}
+  m_LocalScale: {x: 8, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 6528747379487966615}
   m_RootOrder: 1
@@ -236,7 +333,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023135935695521970}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 112bca7f1688efc4ab4af298630bab9f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -254,29 +351,26 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 94
+  m_Constraints: 46
   m_CollisionDetection: 0
---- !u!95 &5023135935695521971
-Animator:
-  serializedVersion: 3
+--- !u!114 &4593243792486860271
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023135935695521970}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8cee15075e045ba499f5f1a2ca50f9bf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc880e9143ba604092490d40f6aaaab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentID: {fileID: -1328824436726230490}
+  ParentNPM: {fileID: 7871195945955154135}
+  NTC: {fileID: 3750224311588799054}
+  Rigid: {fileID: 5023135935695521972}
 --- !u!1 &5023135937020099479
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +384,7 @@ GameObject:
   - component: {fileID: 5023135937020099468}
   - component: {fileID: 5023135937020099467}
   - component: {fileID: 5023135937020099465}
-  - component: {fileID: 5023135937020099464}
+  - component: {fileID: 7198656980936027019}
   m_Layer: 8
   m_Name: Right block
   m_TagString: Hazard
@@ -306,8 +400,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023135937020099479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 5, z: 5}
+  m_LocalPosition: {x: 5.0625, y: 1, z: 0}
+  m_LocalScale: {x: 8, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 6528747379487966615}
   m_RootOrder: 0
@@ -368,7 +462,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023135937020099479}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 112bca7f1688efc4ab4af298630bab9f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -386,26 +480,23 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 94
+  m_Constraints: 46
   m_CollisionDetection: 0
---- !u!95 &5023135937020099464
-Animator:
-  serializedVersion: 3
+--- !u!114 &7198656980936027019
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023135937020099479}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 28e94b9e6625ca64c9e73b4249b035a3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc880e9143ba604092490d40f6aaaab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentID: {fileID: -1328824436726230490}
+  ParentNPM: {fileID: 7871195945955154135}
+  NTC: {fileID: 3607437952774956528}
+  Rigid: {fileID: 5023135937020099465}
