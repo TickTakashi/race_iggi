@@ -782,7 +782,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   runInBackground: 1
   startOnHeadless: 1
-  showDebugMessages: 1
+  showDebugMessages: 0
   serverTickRate: 30
   offlineScene: 
   onlineScene: 
@@ -857,7 +857,7 @@ MonoBehaviour:
   OnServerDisconnected:
     m_PersistentCalls:
       m_Calls: []
-  port: 25565
+  port: 25569
   NoDelay: 1
   Secure: 0
   CertificatePath: 
