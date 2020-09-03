@@ -475,7 +475,8 @@ MonoBehaviour:
   TurningForce: 30
   JumpForce: 9.5
   GroundDistance: 0.2
-  AirControlRatio: 0.075
+  AirControlRatio: 0.5
+  BackwardRatio: 0.5
   Ground:
     serializedVersion: 2
     m_Bits: 256
@@ -484,6 +485,9 @@ MonoBehaviour:
     m_Bits: 512
   GroundCheckOrigin: {fileID: 6620533302044959026}
   Body: {fileID: 6620533302620378232}
+  ColoredComponents:
+  - {fileID: 6620533302620378234}
+  - {fileID: 6620533302229259024}
   ForwardGuidePrefab: {fileID: 2893278614467676972, guid: 967b4a484e1981745a3f2125c2764777, type: 3}
 --- !u!153 &6620533302620378239
 ConfigurableJoint:

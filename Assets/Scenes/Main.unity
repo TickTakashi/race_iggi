@@ -503,7 +503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4369457751714858384, guid: 2c2532ec0f106cb4da6f589035741da0, type: 3}
       propertyPath: DEBUG_ForceSeed
-      value: 29
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4369457751714858385, guid: 2c2532ec0f106cb4da6f589035741da0, type: 3}
       propertyPath: m_LocalPosition.x
