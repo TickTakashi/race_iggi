@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 3972910027972598462}
   - component: {fileID: 576908857434128627}
   - component: {fileID: -9048568018506422746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BasicJumpTile_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}

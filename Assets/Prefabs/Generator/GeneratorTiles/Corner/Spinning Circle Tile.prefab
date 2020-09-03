@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 8144813798179920970}
   - component: {fileID: 8144813798179921013}
   - component: {fileID: 2468279425019720573}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spinning Circle Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

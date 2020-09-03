@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PhysicsController : NetworkBehaviour
 {
+	public static float WorldYLimit = -2f;
+
 	public ConfigurableJoint Hips;
 	public float Speed = 5f;
 	public float TurningForce = 30f;
 	public float JumpForce = 2f;
 	public float GroundDistance = 0.2f;
 	public float AirControlRatio = 0.3f;
-	public LayerMask Ground;
+	public LayerMask Ground; 
+	public LayerMask Lava;
 	public Transform GroundCheckOrigin;
 	public Rigidbody Body;
 
@@ -20,9 +23,11 @@ public class PhysicsController : NetworkBehaviour
 	private CinemachineFreeLook _forwardGuide;
 	private Vector3 _inputs = Vector3.zero;
 	private Quaternion _cachedRotation;
+	private Vector3 _cachedSpawnPosition;
 
 	private bool isGrounded => Physics.CheckSphere(GroundCheckOrigin.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
-
+	private bool isLava => Physics.CheckSphere(GroundCheckOrigin.position, GroundDistance, Lava, QueryTriggerInteraction.Ignore);
+	private bool isOOB => transform.position.y < WorldYLimit || isLava;
 
 	public override void OnStartClient() {
 		base.OnStartClient();
@@ -48,6 +53,10 @@ public class PhysicsController : NetworkBehaviour
 			if (Input.GetButtonDown("Jump")) {
 				CmdJump();
 			}
+
+			if (isOOB || Input.GetButtonDown("Escape")) {
+				CmdRespawn();
+			}
 		}
 	}
 
@@ -66,6 +75,15 @@ public class PhysicsController : NetworkBehaviour
 		base.OnStartServer();
 		Body.SetKinematicWithChildren(false);
 		_cachedRotation = Hips.transform.rotation;
+		_cachedSpawnPosition = transform.position;
+	}
+
+
+	[Command]
+	void CmdRespawn() {
+		// TODO: Respawn the player.
+		transform.position = _cachedSpawnPosition;
+		Body.velocity = Vector3.zero;
 	}
 
 	[Command]
