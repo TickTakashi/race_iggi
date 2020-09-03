@@ -368,7 +368,7 @@ Transform:
   m_GameObject: {fileID: 6620533302620378182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5984411, y: 1.2596416, z: -0.8771682}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 6620533302229259026}
   - {fileID: 6620533302499857959}
@@ -449,8 +449,8 @@ Rigidbody:
   m_GameObject: {fileID: 6620533302620378182}
   serializedVersion: 2
   m_Mass: 0.5
-  m_Drag: 0.3
-  m_AngularDrag: 0.3
+  m_Drag: 0.4
+  m_AngularDrag: 0.4
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -471,11 +471,11 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   Hips: {fileID: 6620533302620378239}
-  Speed: 8
+  Speed: 6.5
   TurningForce: 30
   JumpForce: 9.5
   GroundDistance: 0.2
-  AirControlRatio: 0.1
+  AirControlRatio: 0.075
   Ground:
     serializedVersion: 2
     m_Bits: 256
