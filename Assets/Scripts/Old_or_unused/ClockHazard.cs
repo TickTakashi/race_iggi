@@ -14,11 +14,6 @@ public class ClockHazard : NetworkBehaviour
 		ClockHand.centerOfMass = Vector3.zero;
 	}
 
-	public override void OnStartServer() {
-		base.OnStartServer();
-		ClockHand.isKinematic = false;
-	}
-
 	[ServerCallback]
 	private void FixedUpdate() {
 		if (ClockHand.angularVelocity.y < speedTolerance * spinSpeed * Mathf.Deg2Rad) {

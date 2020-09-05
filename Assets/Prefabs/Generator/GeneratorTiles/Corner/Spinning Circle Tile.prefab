@@ -3224,6 +3224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8696135950283004360}
   - component: {fileID: 778379683273361848}
+  - component: {fileID: 8245525686132234330}
   m_Layer: 0
   m_Name: ClockHazard
   m_TagString: Untagged
@@ -3263,6 +3264,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 3
+--- !u!114 &8245525686132234330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8061175850188661721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc880e9143ba604092490d40f6aaaab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentID: {fileID: 2468279425019720573}
+  ParentNPM: {fileID: 2370196086520619357}
+  NTC: {fileID: 2767555284044145491}
+  Rigid: {fileID: 778379683273361848}
 --- !u!1 &8144813798179921012
 GameObject:
   m_ObjectHideFlags: 0
@@ -3275,6 +3292,9 @@ GameObject:
   - component: {fileID: 8144813798179920971}
   - component: {fileID: 2468279425019720573}
   - component: {fileID: 5687730945744278194}
+  - component: {fileID: 2370196086520619357}
+  - component: {fileID: 536959890567381501}
+  - component: {fileID: 2767555284044145491}
   m_Layer: 9
   m_Name: Spinning Circle Tile
   m_TagString: Untagged
@@ -3343,6 +3363,59 @@ MonoBehaviour:
   spinSpeed: 180
   acceleration: 90
   speedTolerance: 0.9
+--- !u!114 &2370196086520619357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144813798179921012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d09d9f4a6e7ee4ba9a94181442e442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  ManagedBodies:
+  - {fileID: 778379683273361848}
+--- !u!114 &536959890567381501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144813798179921012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+--- !u!114 &2767555284044145491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144813798179921012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  target: {fileID: 8696135950283004360}
 --- !u!1 &8260259307106222556
 GameObject:
   m_ObjectHideFlags: 0
